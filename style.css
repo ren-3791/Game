@@ -1,0 +1,126 @@
+/* Style the entire page */
+*
+{
+  margin: 0px;
+  padding: 0px;
+  font-family: AmericanTypewriter, Courier, ComicSansMS;
+}
+/* Style hidden elements */
+.hidden
+{
+  display: none;
+}
+/* Style the area for the title */
+#titleContainer
+{
+  background-color: #E8EEEA;
+  border: 10px solid;
+  border-color: #735961;
+}
+/* Style the title text */
+#title
+{
+  color: #735961;
+  font-weight: 15;
+  font-size: 50px;
+  padding: 35px;
+  text-align: center;
+}
+/* Style the subtitle text */
+#subtitle
+{
+  color: #688D74;
+  font-weight: 10;
+  font-size: 15px;
+  padding: 20px;
+  padding-top: 0px;
+  text-align: center;
+}
+/* Style the area for the rules and parameters*/
+.rpContainer
+{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  background-color: #DCD1D4;
+  border: 10px solid;
+  border-color: #688D74;
+}
+/* Style the area for the parameters*/
+#parametersContainer
+{
+  flex-wrap: wrap;
+}
+/* Style the button to show the rules and parameters*/
+.rpButton
+{
+  height: 50px;
+  background-color: #E8EEEA;
+  color: #735961;
+  font-weight: 10;
+  font-size: 20px;
+  padding: 10px;
+  border: 2px solid;
+  border-radius: 20%;
+  border-color: #688D74;
+  margin: 10px;
+  white-space: nowrap;
+}
+/* Style the button to show the rules and parameters when hovered*/
+.rpButton:hover
+{
+  background-color: #D0DCD4;
+  transition-duration: 0.5s;
+}
+/* Style the rules and parameters text */
+.rpText
+{
+  color: #735961;
+  font-weight: 10;
+  font-size: 15px;
+  padding: 10px;
+}
+/* Style the centered rules and parameters text */
+.rpText2
+{
+  color: #688D74;
+  font-weight: 10;
+  font-size: 15px;
+  padding: 10px;
+  text-align: center;
+}
+/* Style the smaller rules and parameters text */
+.rpText3
+{
+  color: #688D74;
+  font-weight: 10;
+  font-size: 10px;
+  padding: 10px;
+  text-align: center;
+}
+/* Style the area of the sliders */
+#sliderContainer
+{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: #DCD1D4;
+}
+/* Style the area of each column in the slider container */
+.sliderColumn
+{
+  width: 15%;
+  padding-left: 3%;
+  padding-right: 2%;
+  display: flex;
+  flex-direction: column;
+  background-color: #DCD1D4;
+}
+/* Style the area for the game */
+#gameContainer
+{
+  background-color: #E8EEEA;
+  border: 10px solid;
+  border-color: #735961;
+  height: 200px;
+}
