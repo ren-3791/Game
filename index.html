@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset = "utf-8">
+  <meta name = "viewport" content = "width=device-width">
+  <title>Diagonal 2048</title>
+  <link href = "style.css" rel = "stylesheet" type = "text/css" />
+  <script src="script.js"></script>
+</head>
+
+<body>
+  <!--Area for the title text-->
+  <div id = "titleContainer">
+    <!--Title Text-->
+    <p id = "title"> Diagonal 2048<p>
+    <!--Subtitle text-->
+    <p id = "subtitle"> Ren's variant on the popular game 2048, originally created by Gabriele Cirulli.</p>
+  </div>
+</body>
+  <!--Area for the explanation of rules-->
+  <div class = "rpContainer">
+    <!--Option to show the rules-->
+    <button class = "rpButton" onclick = showRules()>Show Game Rules</button>
+    <!--Explanation of the rules-->
+    <p class = "rpText" id = "rules"></p>
+  </div>
+  <!--Area for playing the game-->
+  <div id = gameContainer>
+    <p>game goes here</p>
+  </div>
+  <!--Area for game parameters-->
+  <div class = "rpContainer" id = "parametersContainer">
+    <!--Option to modify the parameters-->
+    <button class = "rpButton" onclick = showParameters()>Modify Game Parameters</button>
+    <!--Introduction to the parameters-->
+    <p class = "rpText">Diagonal 2048 can be modified to create a custom playing experience and difficulty level by changing certain parameters. Click the button to the left for more details.</p>
+    <!--Explanation of the default parameters-->
+    <p class = "rpText hidden" id = "defaultParameters">The default parameters are as follows: Winning Tile = 6, Board Size = 4 x 4, Spawning a New Tile = 0.85, New Tile Being Value 2 = 0.15</p>
+    <!--Area for modifying the parameters-->
+    <div id = "sliderContainer">
+      <!--Area for modifying the winning tile value-->
+      <div class = "sliderColumn">
+        <p class = "rpText2">Winning Tile Value</p>
+        <input type="range" min="2" max="10" step="1" value="6" class="parameterSlider">
+        <p class = "rpText3">This controls the value of the tile that you need to create to win. Higher valued tiles are more difficult to create, so it is recommended to increase the size of the board as well if increasing this variable.</p>
+      </div>
+      <!--Area for modifying the number of rows-->
+      <div class = "sliderColumn">
+        <p class = "rpText2">Number of Rows</p>
+        <input type="range" min="3" max="8" step="1" value="4" class="parameterSlider">
+        <p class = "rpText3">This controls the number of rows on the board. Smaller board sizes will lead to more restrictive gameplay. Using different row and column dimensions can lead to more interesting effects with diagonal moves.</p>
+      </div>
+      <!--Area for modifying the number of columns-->
+      <div class = "sliderColumn">
+        <p class = "rpText2">Number of Columns</p>
+        <input type="range" min="3" max="8" step="1" value="4" class="parameterSlider">
+        <p class = "rpText3">This controls the number of rows on the board. Smaller board sizes will lead to more restrictive gameplay. Using different row and column dimensions can lead to more interesting effects with diagonal moves.</p>
+      </div>
+      <!--Area for modifying the probability of tile-->
+      <div class = "sliderColumn">
+        <p class = "rpText2">Probability of Tile</p>
+        <input type="range" min="0" max="1" step="0.01" value="0.3" class="parameterSlider">
+        <p class = "rpText3">This controls the probability that a new tile will spawn on the board after each move. Increasing this value can speed up the pace of gameplay, but may result in tiles filling up the board faster than merges can occur.</p>
+      </div>
+      <!--Area for modifying the probability of two-->
+      <div class = "sliderColumn">
+        <p class = "rpText2">Probability of Two</p>
+        <input type="range" min="0" max="1" step="0.01" value="0.1" class="parameterSlider">
+        <p class = "rpText3">This controls the probability that, if a new tile spawns, it will have an initial value of 2. Increasing this value can speed up the pace of gameplay. Choosing an extreme value to either end will make tile spawning behavior increasingly predictable.</p>
+      </div>
+    </div>
+    <!--Option to update the parameters-->
+    <button class = "rpButton" id = "updateParametersButton" onclick = updateParameters()>Update Game Parameters</button>
+    <!--Option to reset the parameters-->
+    <button class = "rpButton hidden" id = "resetParametersButton" onclick = resetParameters()>Reset Game Parameters</button>
+    <!--Warning about updating the parameters-->
+    <p class = "rpText" id = "updateParametersText">Warning: Updating or resetting the parameters will reset the current game.</p>
+  </div>
+</html>
