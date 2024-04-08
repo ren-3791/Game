@@ -13,7 +13,7 @@
 /* Style the area for the title */
 #titleContainer
 {
-  background-color: #E8EEEA;
+  background-color: #DCE5DF;
   border: 10px solid;
   border-color: #735961;
 }
@@ -42,7 +42,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  background-color: #DCD1D4;
+  background-color: #E5DCDE;
   border: 10px solid;
   border-color: #688D74;
 }
@@ -55,7 +55,7 @@
 .rpButton
 {
   height: 50px;
-  background-color: #E8EEEA;
+  background-color: #DCE5DF;
   color: #735961;
   font-weight: 10;
   font-size: 20px;
@@ -69,7 +69,7 @@
 /* Style the button to show the rules and parameters when hovered*/
 .rpButton:hover
 {
-  background-color: #D0DCD4;
+  background-color: #C4D4C9;
   transition-duration: 0.5s;
 }
 /* Style the rules and parameters text */
@@ -104,7 +104,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  background-color: #DCD1D4;
+  background-color: #E5DCDE;
 }
 /* Style the area of each column in the slider container */
 .sliderColumn
@@ -114,12 +114,36 @@
   padding-right: 2%;
   display: flex;
   flex-direction: column;
-  background-color: #DCD1D4;
+  background-color: #E5DCDE;
+}
+/* Style the sliders */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none; 
+  width: 100%;
+  cursor: pointer;
+  outline: none;
+  height: 15px;
+  background: #DCE5DF;
+  overflow: hidden;
+  border-radius: 20%;
+}
+input[type="range"]::-webkit-slider-thumb
+{
+  -webkit-appearance: none;
+  appearance: none;
+  /* creating a custom design */
+  height: 15px;
+  width: 15px;
+  border-radius: 35%;
+  border: none;
+  background-color: #735961;
+  box-shadow: -407px 0 0 400px #C4D4C9;
 }
 /* Style the area for the game */
 #gameContainer
 {
-  background-color: #E8EEEA;
+  background-color: #DCE5DF;
   border: 10px solid;
   border-color: #735961;
   height: 200px;
