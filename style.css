@@ -14,7 +14,7 @@
 #titleContainer
 {
   background-color: #DCE5DF;
-  border: 10px solid;
+  border: 5px solid;
   border-color: #735961;
 }
 /* Style the title text */
@@ -43,7 +43,7 @@
   flex-direction: row;
   flex-wrap: nowrap;
   background-color: #E5DCDE;
-  border: 10px solid;
+  border: 5px solid;
   border-color: #688D74;
 }
 /* Style the area for the parameters*/
@@ -98,6 +98,16 @@
   padding: 10px;
   text-align: center;
 }
+/* Style the text for the sliders */
+.sliderValue
+{
+  color: #735961;
+  font-weight: 10;
+  font-size: 15px;
+  padding: 10px;
+  padding-bottom: 0px;
+  text-align: center;
+}
 /* Style the area of the sliders */
 #sliderContainer
 {
@@ -110,8 +120,8 @@
 .sliderColumn
 {
   width: 15%;
-  padding-left: 3%;
-  padding-right: 2%;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
   display: flex;
   flex-direction: column;
   background-color: #E5DCDE;
@@ -132,7 +142,6 @@ input[type="range"]::-webkit-slider-thumb
 {
   -webkit-appearance: none;
   appearance: none;
-  /* creating a custom design */
   height: 15px;
   width: 15px;
   border-radius: 35%;
@@ -140,11 +149,89 @@ input[type="range"]::-webkit-slider-thumb
   background-color: #735961;
   box-shadow: -407px 0 0 400px #C4D4C9;
 }
+/* Style the area of the checkboxes */
+#checkboxContainer
+{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: #E5DCDE;
+}
+/* Style the area of each column in the checkbox container */
+.checkboxColumn
+{
+  width: 35%;
+  padding-left: 7.5%;
+  padding-right: 7.5%;
+  display: flex;
+  flex-direction: column;
+  background-color: #E5DCDE;
+  align-items: center;
+}
+/* Style the checkboxes */
+.checkboxContainer
+{
+  display: block;
+  position: relative;
+  cursor: pointer;
+  font-size: 22px;
+  user-select: none;
+}
+.checkboxContainer input
+{
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  margin-inline-start: -10px;
+  background-color: #DCE5DF;
+  border-radius: 25%;
+}
+.checkboxContainer:hover input ~ .checkmark
+{
+  background-color: #C4D4C9;
+}
+.checkboxContainer input:checked ~ .checkmark
+{
+  background-color: #735961;
+}
+.checkmark:after
+{
+  content: "";
+  position: absolute;
+  display: none;
+}
+.checkboxContainer input:checked ~ .checkmark:after
+{
+  display: block;
+}
+.checkboxContainer .checkmark:after
+{
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid #C4D4C9;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+}
 /* Style the area for the game */
 #gameContainer
 {
   background-color: #DCE5DF;
-  border: 10px solid;
+  border: 5px solid;
   border-color: #735961;
   height: 200px;
+}
+.break
+{
+  height: 20px;
 }
