@@ -17,7 +17,6 @@
     <!--Subtitle text-->
     <p id = "subtitle"> Ren's variant on the popular game 2048, originally created by Gabriele Cirulli.</p>
   </div>
-</body>
   <!--Area for the explanation of rules-->
   <div class = "rpContainer">
     <!--Option to show the rules-->
@@ -36,45 +35,71 @@
     <!--Introduction to the parameters-->
     <p class = "rpText">Diagonal 2048 can be modified to create a custom playing experience and difficulty level by changing certain parameters. Click the button to the left for more details.</p>
     <!--Explanation of the default parameters-->
-    <p class = "rpText" id = "defaultParameters">The current parameters are: Winning Tile = 6, Board Size = 4 x 4, Spawning a New Tile = 0.85, New Tile Being Value 2 = 0.15</p>
+    <p class = "rpText" id = "defaultParameters">The current parameters are: Winning Tile = 6, Board Size = 4 x 4, Spawning a New Tile = 0.3, New Tile Being Value 2 = 0.15. Horizontal and vertical moves are enabled. Diagonal moves are enabled.</p>
     <!--Area for modifying the parameters-->
     <div id = "sliderContainer">
       <!--Area for modifying the winning tile value-->
       <div class = "sliderColumn">
         <p class = "rpText2 hidden">Winning Tile Value</p>
-        <input type = "range" min = "2" max = "10" step = "1" value = "6" class = "parameterSlider hidden" id = "winSlider">
+        <input type = "range" min = "2" max = "10" step = "1" value = "6" oninput="winValue.innerText = this.value" class = "parameterSlider hidden" id = "winSlider">
+        <p class = "sliderValue hidden" id = "winValue">6</p>
         <p class = "rpText3 hidden">This controls the value of the tile that you need to create to win. Higher valued tiles are more difficult to create, so it is recommended to increase the size of the board as well if increasing this variable.</p>
       </div>
       <!--Area for modifying the number of rows-->
       <div class = "sliderColumn">
         <p class = "rpText2 hidden">Number of Rows</p>
-        <input type = "range" min = "3" max = "8" step = "1" value = "4" class = "parameterSlider hidden" id = "rowSlider">
+        <input type = "range" min = "3" max = "8" step = "1" value = "4" oninput="rowValue.innerText = this.value" class = "parameterSlider hidden" id = "rowSlider">
+        <p class = "sliderValue hidden" id = "rowValue">4</p>
         <p class = "rpText3 hidden">This controls the number of rows on the board. Smaller board sizes will lead to more restrictive gameplay. Using different row and column dimensions can lead to more interesting effects with diagonal moves.</p>
       </div>
       <!--Area for modifying the number of columns-->
       <div class = "sliderColumn">
         <p class = "rpText2 hidden">Number of Columns</p>
-        <input type="range" min = "3" max = "8" step = "1" value = "4" class = "parameterSlider hidden" id = "colSlider">
+        <input type="range" min = "3" max = "8" step = "1" value = "4" oninput="colValue.innerText = this.value" class = "parameterSlider hidden" id = "colSlider">
+        <p class = "sliderValue hidden" id = "colValue">4</p>
         <p class = "rpText3 hidden">This controls the number of rows on the board. Smaller board sizes will lead to more restrictive gameplay. Using different row and column dimensions can lead to more interesting effects with diagonal moves.</p>
       </div>
       <!--Area for modifying the probability of tile-->
       <div class = "sliderColumn">
         <p class = "rpText2 hidden">Probability of Tile</p>
-        <input type = "range" min = "0" max = "1" step = "0.01" value = "0.3" class = "parameterSlider hidden" id = "tileSlider">
+        <input type = "range" min = "0" max = "1" step = "0.01" value = "0.3" oninput="tileValue.innerText = this.value" class = "parameterSlider hidden" id = "tileSlider">
+        <p class = "sliderValue hidden" id = "tileValue">0.3</p>
         <p class = "rpText3 hidden">This controls the probability that a new tile will spawn on the board after each move. Increasing this value can speed up the pace of gameplay, but may result in tiles filling up the board faster than merges can occur.</p>
       </div>
       <!--Area for modifying the probability of two-->
       <div class = "sliderColumn">
         <p class = "rpText2 hidden">Probability of Two</p>
-        <input type = "range" min = "0" max = "1" step = "0.01" value = "0.1" class = "parameterSlider hidden" id = "twoSlider">
+        <input type = "range" min = "0" max = "1" step = "0.01" value = "0.1" oninput="twoValue.innerText = this.value" class = "parameterSlider hidden" id = "twoSlider">
+        <p class = "sliderValue hidden" id = "twoValue">0.15</p>
         <p class = "rpText3 hidden">This controls the probability that, if a new tile spawns, it will have an initial value of 2. Increasing this value can speed up the pace of gameplay. Choosing an extreme value to either end will make tile spawning behavior increasingly predictable.</p>
       </div>
     </div>
+    <div id = "checkboxContainer">
+      <div class = "checkboxColumn">
+        <p class = "rpText2 hidden">Vertical and Horizontal Moves</p>
+        <label class="checkboxContainer">
+          <input type = "checkbox" checked = "checked" class = "rpCheckbox" id = "hvMoves">
+          <span class="checkmark hidden"></span>
+        </label>
+        <div class = "break"></div>
+        <p class = "rpText3 hidden">This controls whether horizontal and vertical moves are allowed. Unchecking this box will remove the functionality of the W, A, S, and D keys, which will make gameplay much more challenging.</p>
+      </div>
+      <div class = "checkboxColumn">
+        <p class = "rpText2 hidden">Diagonal Moves</p>
+        <label class="checkboxContainer">
+          <input type = "checkbox" checked = "checked" class = "rpCheckbox" id = "dMoves">
+          <span class="checkmark hidden"></span>
+        </label>
+        <div class = "break"></div>
+        <p class = "rpText3 hidden">This controls whether diagonal moves are allowed. Unchecking this box will remove the movement functionality of the T, G, H, and Y keys (but will not affect their merging functionality), which will make gameplay much more challenging.</p>
+      </div>
+    </div>
     <!--Option to update the parameters-->
-    <button class = "rpButton hidden" id = "updateParametersButton" onclick = updateParameters()>Update Game Parameters</button>
+    <button class = "rpButton hidden" id = "updateParametersButton" onclick = updateParameters()>Update Parameters</button>
     <!--Option to reset the parameters-->
-    <button class = "rpButton hidden" id = "resetParametersButton" onclick = resetParameters() display: none;>Reset Game Parameters</button>
+    <button class = "rpButton hidden" id = "resetParametersButton" onclick = resetParameters() display: none;>Reset Parameters</button>
     <!--Warning about updating the parameters-->
-    <p class = "rpText hidden" id = "updateParametersText">Warning: Updating or resetting the parameters will reset the current game.</p>
+    <p class = "rpText hidden" id = "updateParametersText">Warning: Updating or resetting the parameters will restart the current game.</p>
   </div>
+</body>
 </html>
