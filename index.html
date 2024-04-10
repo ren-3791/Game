@@ -15,7 +15,8 @@
     <!--Title Text-->
     <p id = "title"> Diagonal 2048<p>
     <!--Subtitle text-->
-    <p id = "subtitle"> Ren's variant on the popular game 2048, originally created by Gabriele Cirulli.</p>
+    <p class = "subtitle"> Ren's variant on the popular game 2048, originally created by Gabriele Cirulli.</p>
+    <p class = "subtitle"> Some style features may not load correctly outside of Chrome and Safari.</p>
   </div>
   <!--Area for the explanation of rules-->
   <div class = "rpContainer">
@@ -26,14 +27,16 @@
   </div>
   <!--Area for playing the game-->
   <div id = gameContainer>
-    <p>game goes here</p>
+    <div id = "gameButton" onclick = restartGame()>Start New Game</div>
+    <div id = "gameBoard"></div>
+    
   </div>
   <!--Area for game parameters-->
   <div class = "rpContainer" id = "parametersContainer">
     <!--Option to modify the parameters-->
     <button class = "rpButton" onclick = showParameters()>Modify Game Parameters</button>
     <!--Introduction to the parameters-->
-    <p class = "rpText">Diagonal 2048 can be modified to create a custom playing experience and difficulty level by changing certain parameters. Click the button to the left for more details.</p>
+    <p class = "rpText">Diagonal 2048 can be modified to create a custom playing experience and difficulty level by changing certain parameters. Click the button for more details.</p>
     <!--Explanation of the default parameters-->
     <p class = "rpText" id = "defaultParameters">The current parameters are: Winning Tile = 6, Board Size = 4 x 4, Spawning a New Tile = 0.3, New Tile Being Value 2 = 0.15. Horizontal and vertical moves are enabled. Diagonal moves are enabled.</p>
     <!--Area for modifying the parameters-->
@@ -43,7 +46,7 @@
         <p class = "rpText2 hidden">Winning Tile Value</p>
         <input type = "range" min = "2" max = "10" step = "1" value = "6" oninput="winValue.innerText = this.value" class = "parameterSlider hidden" id = "winSlider">
         <p class = "sliderValue hidden" id = "winValue">6</p>
-        <p class = "rpText3 hidden">This controls the value of the tile that you need to create to win. Higher valued tiles are more difficult to create, so it is recommended to increase the size of the board as well if increasing this variable.</p>
+        <p class = "rpText3 hidden">This controls the value of the tile that you need to create to win. Higher valued tiles require more space to create, so it is recommended to increase the size of the board as well if increasing this variable.</p>
       </div>
       <!--Area for modifying the number of rows-->
       <div class = "sliderColumn">
