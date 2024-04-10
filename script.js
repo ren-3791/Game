@@ -1,3 +1,4 @@
+//Definition of global variables for the game parameters
 var winCriteria = 6;
 var gridRows = 4;
 var gridCols = 4;
@@ -6,6 +7,15 @@ var twoProbability = 0.15;
 var hvMoves = true;
 var dMoves = true;
 flag = true;
+//Definition of global variables for the game
+var gameMatrix;
+var tileMatrix;
+//Definition of global constants for the game
+const tilepx = 100;
+const tilepad = 10;
+//Array of colors
+const colors = ["FDF8F4", "F8EBDD", "F3DEC6", "EED1AF", "E9C398", "E4B681", "E0A96B", "D9974C", "CD822B", "A86A24"]
+//Function to toggle the rules description on and off when the show game rules button is clicked
 function showRules()
 {
   var text = document.getElementById("rules");
@@ -18,6 +28,7 @@ function showRules()
     text.innerHTML = "";
   }
 }
+//Function to toggle the parameters description on and off when the show modify game parameters button is clicked
 function showParameters()
 {
   var resetButton = document.getElementById("resetParametersButton");
@@ -62,6 +73,7 @@ function showParameters()
       values[i].style.display = "none";
   }
 }
+//Function to reset the parameters, toggle the parameter description off, and reset the game when the reset parameters button is clicked
 function resetParameters()
 {
   var resetButton = document.getElementById("resetParametersButton");
@@ -118,8 +130,9 @@ function resetParameters()
   var box2 = document.getElementById("dMoves");
   box2.checked = dMoves;
   defaultText.innerHTML = "The current parameters are: Winning Tile = 6, Board Size = 4 x 4, Spawning a New Tile = 0.3, New Tile Being Value 2 = 0.15. Horizontal and vertical moves are enabled. Diagonal moves are enabled.";
-  //restart the game
+  restartGame();
 }
+//Function to update the paramenters, toggle the parameter description off, and reset the game when the update parameters button is clicked
 function updateParameters()
 {
   var resetButton = document.getElementById("resetParametersButton");
@@ -172,5 +185,91 @@ function updateParameters()
     text2 = " Diagonal moves are disabled.";
   }
   defaultText.innerText = "The current parameters are: Winning Tile = " + winCriteria + ", Board Size = " + gridRows + " x " + gridCols + ", Spawning a New Tile = " + tileProbability + " , New Tile Being Value 2 = " + twoProbability + text1 + text2;
-  //restart the game
+  restartGame();
+}
+function restartGame()
+{
+  gridRows = +gridRows;
+  gridCols = +gridCols;
+  //Reset the game matrix to the initial state
+  gameMatrix = new Array(gridRows);
+  for(var i = 0; i < gridRows; i++)
+  {
+    gameMatrix[i] = [];
+  }
+  //gameMatrix = [];
+  for(var i = 0; i < gridRows; i++)
+    for(var j = 0; j < gridCols; j++)
+      gameMatrix[i][j] = 0;
+  //Randomly spawn a new tile
+  var row = Math.floor(Math.random() * gridRows);
+  var col = Math.floor(Math.random() * gridCols);
+  gameMatrix[row][col] = 1;
+  //Hide the start game button
+  var gameButton = document.getElementById("gameButton");
+  gameButton.style.display = "none";
+  //Create a new gameboard
+  var board = document.getElementById("gameBoard");
+  var boardSizeRow = gridRows * tilepx + (gridRows + 1) * tilepad + 0.1 * gridRows * tilepad;
+  var boardSizeCol = gridCols * tilepx + (gridCols + 1) * tilepad + 0.1 * gridCols * tilepad;
+  board.style.width = boardSizeCol + "px";
+  board.style.height = boardSizeRow + "px";
+  board.style.position = "relative";
+  //Hide the previous tiles
+  var tiles = document.getElementsByClassName("tile");
+  for(var i = 0; i < tiles.length; i++)
+    tiles[i].style.display = "none";
+  //Create a new set of tiles
+  tileMatrix = new Array(gridRows);
+  for(var i = 0; i < gridRows; i++)
+  {
+    tileMatrix[i] = [];
+  }
+  for(var i = 0; i < gridRows; i++)
+    for(var j = 0; j < gridCols; j++)
+      tileMatrix[i][j] = new Tile(i, j, gameMatrix[i][j]);
+}
+class Tile
+{
+  constructor(i, j, v)
+  {
+    this.rowPos = i;
+    this.colPos = j;
+    this.value = v;
+    this.xPos = tilepx * j + (tilepad + 1) * j + tilepad;
+    this.yPos = tilepx * i + (tilepad + 1) * i + tilepad;
+    const newDiv = document.createElement("p");
+    newDiv.setAttribute("class", "tile");
+    newDiv.style.backgroundColor = "#" + colors[v];
+    if(this.value != 0)
+      newDiv.textContent = ""+this.value;
+    newDiv.style.position = "absolute";
+    newDiv.style.left = this.xPos + "px";
+    newDiv.style.top = this.yPos + "px";
+    document.getElementById("gameBoard").appendChild(newDiv);
+  }
+  getRowPos()
+  {
+    return this.rowPos;
+  }
+  setRowPos(i)
+  {
+    this.rowPos = i;
+  }
+  getColPos()
+  {
+    return this.colPos;
+  }
+  setColPos(j)
+  {
+    this.colPos = j;
+  }
+  getValue()
+  {
+    return this.value;
+  }
+  setValue(v)
+  {
+    this.value = v;
+  }
 }
