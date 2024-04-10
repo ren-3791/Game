@@ -1,3 +1,12 @@
+/* Define global variables for the colors */
+:root {
+  --green1: #DBE6DE;
+  --purple1: #EEE8E9;
+  --green2: #ABC4B2;
+  --purple2: #CBB9BC;
+  --green3: #5C8466;
+  --purple3: #815F68;
+}
 /* Style the entire page */
 *
 {
@@ -13,23 +22,23 @@
 /* Style the area for the title */
 #titleContainer
 {
-  background-color: #DCE5DF;
+  background-color: var(--green1);
   border: 5px solid;
-  border-color: #735961;
+  border-color: var(--purple3);
 }
 /* Style the title text */
 #title
 {
-  color: #735961;
+  color: var(--purple3);
   font-weight: 15;
   font-size: 50px;
   padding: 35px;
   text-align: center;
 }
 /* Style the subtitle text */
-#subtitle
+.subtitle
 {
-  color: #688D74;
+  color: var(--green3);
   font-weight: 10;
   font-size: 15px;
   padding: 20px;
@@ -42,9 +51,9 @@
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  background-color: #E5DCDE;
+  background-color: var(--purple1);
   border: 5px solid;
-  border-color: #688D74;
+  border-color: var(--green3);
 }
 /* Style the area for the parameters*/
 #parametersContainer
@@ -55,27 +64,27 @@
 .rpButton
 {
   height: 50px;
-  background-color: #DCE5DF;
-  color: #735961;
+  background-color: var(--green1);
+  color: var(--purple3);
   font-weight: 10;
   font-size: 20px;
   padding: 10px;
   border: 2px solid;
   border-radius: 20%;
-  border-color: #688D74;
+  border-color: var(--green3);
   margin: 10px;
   white-space: nowrap;
 }
 /* Style the button to show the rules and parameters when hovered*/
 .rpButton:hover
 {
-  background-color: #C4D4C9;
+  background-color: var(--green2);
   transition-duration: 0.5s;
 }
 /* Style the rules and parameters text */
 .rpText
 {
-  color: #735961;
+  color: var(--purple3);
   font-weight: 10;
   font-size: 15px;
   padding: 10px;
@@ -83,7 +92,7 @@
 /* Style the centered rules and parameters text */
 .rpText2
 {
-  color: #688D74;
+  color: var(--green3);
   font-weight: 10;
   font-size: 15px;
   padding: 10px;
@@ -92,7 +101,7 @@
 /* Style the smaller rules and parameters text */
 .rpText3
 {
-  color: #688D74;
+  color: var(--green3);
   font-weight: 10;
   font-size: 10px;
   padding: 10px;
@@ -101,7 +110,7 @@
 /* Style the text for the sliders */
 .sliderValue
 {
-  color: #735961;
+  color: var(--purple3);
   font-weight: 10;
   font-size: 15px;
   padding: 10px;
@@ -114,7 +123,7 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  background-color: #E5DCDE;
+  background-color: var(--purple1);
 }
 /* Style the area of each column in the slider container */
 .sliderColumn
@@ -124,17 +133,18 @@
   padding-right: 2.5%;
   display: flex;
   flex-direction: column;
-  background-color: #E5DCDE;
+  background-color: var(--purple1);
 }
 /* Style the sliders */
-input[type="range"] {
+input[type="range"]
+{
   -webkit-appearance: none;
   appearance: none; 
   width: 100%;
   cursor: pointer;
   outline: none;
   height: 15px;
-  background: #DCE5DF;
+  background: var(--purple2);
   overflow: hidden;
   border-radius: 20%;
 }
@@ -146,8 +156,8 @@ input[type="range"]::-webkit-slider-thumb
   width: 15px;
   border-radius: 35%;
   border: none;
-  background-color: #735961;
-  box-shadow: -407px 0 0 400px #C4D4C9;
+  background-color: var(--purple3);
+  box-shadow: -407px 0 0 400px var(--green2);
 }
 /* Style the area of the checkboxes */
 #checkboxContainer
@@ -155,7 +165,7 @@ input[type="range"]::-webkit-slider-thumb
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  background-color: #E5DCDE;
+  background-color: var(--purple1);
 }
 /* Style the area of each column in the checkbox container */
 .checkboxColumn
@@ -165,7 +175,7 @@ input[type="range"]::-webkit-slider-thumb
   padding-right: 7.5%;
   display: flex;
   flex-direction: column;
-  background-color: #E5DCDE;
+  background-color: var(--purple1);
   align-items: center;
 }
 /* Style the checkboxes */
@@ -185,23 +195,20 @@ input[type="range"]::-webkit-slider-thumb
   height: 0;
   width: 0;
 }
-.checkmark {
+.checkmark
+{
   position: absolute;
   top: 0;
   left: 0;
   height: 20px;
   width: 20px;
   margin-inline-start: -10px;
-  background-color: #DCE5DF;
+  background-color: var(--purple2);
   border-radius: 25%;
-}
-.checkboxContainer:hover input ~ .checkmark
-{
-  background-color: #C4D4C9;
 }
 .checkboxContainer input:checked ~ .checkmark
 {
-  background-color: #735961;
+  background-color: var(--purple3);
 }
 .checkmark:after
 {
@@ -219,17 +226,55 @@ input[type="range"]::-webkit-slider-thumb
   top: 2px;
   width: 5px;
   height: 10px;
-  border: solid #C4D4C9;
+  border: solid var(--green2);
   border-width: 0 3px 3px 0;
   transform: rotate(45deg);
 }
 /* Style the area for the game */
 #gameContainer
 {
-  background-color: #DCE5DF;
+  background-color: var(--green1);
   border: 5px solid;
-  border-color: #735961;
-  height: 200px;
+  border-color: var(--purple3);
+}
+/* Style the button for starting the game */
+#gameButton
+{
+  background-color: var(--purple1);
+  color: var(--green3);
+  font-weight: 10;
+  font-size: 20px;
+  padding: 10px;
+  border: 2px solid;
+  border-radius: 20%;
+  border-color: var(--purple3);
+  margin: 10px;
+  white-space: nowrap;
+  width: fit-content;
+  height: 25px;
+}
+/* Style the button for starting the game when hovered*/
+#gameButton:hover
+{
+  background-color: var(--purple2);
+  transition-duration: 0.5s;
+}
+/* Style the game board */
+#gameBoard
+{
+  background-color: var(--purple2);
+  margin: 25px;
+  border-radius: 2%;
+}
+.tile
+{
+  height: 100px;
+  width: 100px;
+  border-radius: 5%;
+  color: #5D3B14;
+  text-align: center;
+  font-size: 80px;
+  vertical-align: middle;
 }
 .break
 {
