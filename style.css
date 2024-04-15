@@ -1,4 +1,4 @@
-/* Define global variables for the colors */
+/*Definition of global variables for the colors*/
 :root {
   --green1: #DBE6DE;
   --purple1: #EEE8E9;
@@ -6,277 +6,554 @@
   --purple2: #CBB9BC;
   --green3: #5C8466;
   --purple3: #815F68;
+  --brown1: #4B2F10;
 }
-/* Style the entire page */
+/*Style rules that apply to the entire page*/
 *
 {
+  /*Removing all margin and padding space*/
   margin: 0px;
   padding: 0px;
-  font-family: AmericanTypewriter, Courier, ComicSansMS;
+  /*Setting the font families in order of preference*/
+  font-family: AmericanTypewriter, ComicSansMS, Courier;
+  /*Hiding content that overflows in the x direction*/
+  overflow-x: hidden;
 }
-/* Style hidden elements */
+/*Style rules that apply to the class "hidden"*/
+/*This represents HTML elements that are initially hidden from view of the user*/
 .hidden
 {
+  /*Hiding the element from view*/
   display: none;
 }
-/* Style the area for the title */
+/*Style rules that apply to the id "titleContainer"*/
+/*This represents the area where the title and subtitle text is contained*/
 #titleContainer
 {
+  /*Setting the background color*/
   background-color: var(--green1);
+  /*Adding a border*/
   border: 5px solid;
   border-color: var(--purple3);
 }
-/* Style the title text */
+/*Style rules that apply to the id "title"*/
+/*This represents the main title of the page*/
 #title
 {
-  color: var(--purple3);
-  font-weight: 15;
-  font-size: 50px;
+  /*Adding additional padding space*/
   padding: 35px;
+  /*Setting the text color*/
+  color: var(--purple3);
+  /*Setting the font characteristics*/
+  font-weight: 25;
+  font-size: 75px;
+  /*Aligning the text with center justification*/
   text-align: center;
 }
-/* Style the subtitle text */
-.subtitle
+/*Style rules that apply to the id "subtitle"*/
+/*This represents the main subtitle of the page*/
+#subtitle
 {
-  color: var(--green3);
-  font-weight: 10;
-  font-size: 15px;
+  /*Adding additional padding space matching the padding of the title*/
   padding: 20px;
   padding-top: 0px;
+  padding-bottom: 35px;
+  /*Setting the text color*/
+  color: var(--green3);
+  /*Setting the font characteristics*/
+  font-weight: 10;
+  font-size: 20px;
+  /*Aligning the text with center justification*/
   text-align: center;
 }
-/* Style the area for the rules and parameters*/
+/*Style rules that apply to the class "link"*/
+/*This represents the links to other versions of 2048 and their creators*/
+.link
+{
+  /*Setting the text color*/
+  color: var(--purple3);
+  /*Setting the font characteristics*/
+  font-weight: 10;
+  font-size: 20px;
+  /*Adding an underline to the text*/
+  text-decoration: underline;
+  /*Aligning the text with center justification*/
+  text-align: center;
+}
+/*Style rules that apply to the class "rpContainer"*/
+/*This represents the areas where the rules and parameters data is contained*/
 .rpContainer
 {
+  /*Setting a flex display in the row direction without wrapping*/
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  /*Setting the background color*/
   background-color: var(--purple1);
+  /*Adding a border*/
   border: 5px solid;
   border-color: var(--green3);
+  /*Adding additional vertical padding space*/
+  min-height: 100px;
 }
-/* Style the area for the parameters*/
-#parametersContainer
-{
-  flex-wrap: wrap;
-}
-/* Style the button to show the rules and parameters*/
-.rpButton
-{
-  height: 50px;
-  background-color: var(--green1);
-  color: var(--purple3);
-  font-weight: 10;
-  font-size: 20px;
-  padding: 10px;
-  border: 2px solid;
-  border-radius: 20%;
-  border-color: var(--green3);
-  margin: 10px;
-  white-space: nowrap;
-}
-/* Style the button to show the rules and parameters when hovered*/
-.rpButton:hover
-{
-  background-color: var(--green2);
-  transition-duration: 0.5s;
-}
-/* Style the rules and parameters text */
+/*Style rules that apply to the class "rpText"*/
+/*This represents the default text in the rules and parameters areas*/
 .rpText
 {
+  /*Adding additional padding space*/
+  padding: 10px;
+  /*Setting the text color*/
   color: var(--purple3);
+  /*Setting the font characteristics*/
   font-weight: 10;
   font-size: 15px;
-  padding: 10px;
 }
-/* Style the centered rules and parameters text */
+/*Style rules that apply to the class "rpText2"*/
+/*This represents the text for the parameter titles in the parameters area*/
 .rpText2
 {
+  /*Adding additional padding space*/
+  padding: 10px;
+  /*Setting the text color*/
   color: var(--green3);
+  /*Setting the font characteristics*/
   font-weight: 10;
   font-size: 15px;
-  padding: 10px;
+  /*Aligning the text with center justification*/
   text-align: center;
 }
-/* Style the smaller rules and parameters text */
+/*Style rules that apply to the class "rpText3"*/
+/*This represents the text for the parameter descriptions in the parameters area*/
 .rpText3
 {
+  /*Adding additional padding space*/
+  padding: 10px;
+  /*Setting the text color*/
   color: var(--green3);
+  /*Setting the font characteristics*/
   font-weight: 10;
   font-size: 10px;
-  padding: 10px;
+  /*Aligning the text with center justification*/
   text-align: center;
 }
-/* Style the text for the sliders */
-.sliderValue
+/*Style rules that apply to the class "rpButton"*/
+/*This represents the buttons in the rules and parameters areas*/
+.rpButton
 {
-  color: var(--purple3);
-  font-weight: 10;
-  font-size: 15px;
+  /*Adding additional margin space*/
+  margin: 10px;
+  margin-top: 25px;
+  margin-left: 25px;
+  /*Adding additional padding space*/
   padding: 10px;
-  padding-bottom: 0px;
-  text-align: center;
-}
-/* Style the area of the sliders */
-#sliderContainer
-{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  background-color: var(--purple1);
-}
-/* Style the area of each column in the slider container */
-.sliderColumn
-{
-  width: 15%;
-  padding-left: 2.5%;
-  padding-right: 2.5%;
-  display: flex;
-  flex-direction: column;
-  background-color: var(--purple1);
-}
-/* Style the sliders */
-input[type="range"]
-{
-  -webkit-appearance: none;
-  appearance: none; 
-  width: 100%;
-  cursor: pointer;
-  outline: none;
-  height: 15px;
-  background: var(--purple2);
-  overflow: hidden;
-  border-radius: 20%;
-}
-input[type="range"]::-webkit-slider-thumb
-{
-  -webkit-appearance: none;
-  appearance: none;
-  height: 15px;
-  width: 15px;
-  border-radius: 35%;
-  border: none;
-  background-color: var(--purple3);
-  box-shadow: -407px 0 0 400px var(--green2);
-}
-/* Style the area of the checkboxes */
-#checkboxContainer
-{
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  background-color: var(--purple1);
-}
-/* Style the area of each column in the checkbox container */
-.checkboxColumn
-{
-  width: 35%;
-  padding-left: 7.5%;
-  padding-right: 7.5%;
-  display: flex;
-  flex-direction: column;
-  background-color: var(--purple1);
-  align-items: center;
-}
-/* Style the checkboxes */
-.checkboxContainer
-{
-  display: block;
-  position: relative;
-  cursor: pointer;
-  font-size: 22px;
-  user-select: none;
-}
-.checkboxContainer input
-{
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
-}
-.checkmark
-{
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 20px;
-  width: 20px;
-  margin-inline-start: -10px;
-  background-color: var(--purple2);
-  border-radius: 25%;
-}
-.checkboxContainer input:checked ~ .checkmark
-{
-  background-color: var(--purple3);
-}
-.checkmark:after
-{
-  content: "";
-  position: absolute;
-  display: none;
-}
-.checkboxContainer input:checked ~ .checkmark:after
-{
-  display: block;
-}
-.checkboxContainer .checkmark:after
-{
-  left: 6px;
-  top: 2px;
-  width: 5px;
-  height: 10px;
-  border: solid var(--green2);
-  border-width: 0 3px 3px 0;
-  transform: rotate(45deg);
-}
-/* Style the area for the game */
-#gameContainer
-{
+  /*Allowing content that overflows to wrap*/
+  overflow: wrap;
+  /*Setting the height to fit the content*/
+  height: fit-content;
+  /*Setting the background color*/
   background-color: var(--green1);
-  border: 5px solid;
-  border-color: var(--purple3);
-}
-/* Style the button for starting the game */
-#gameButton
-{
-  background-color: var(--purple1);
-  color: var(--green3);
+  /*Adding a border*/
+  border: 2px solid;
+  border-color: var(--green3);
+  /*Setting the text color*/
+  color: var(--purple3);
+  /*Setting the font characteristics*/
   font-weight: 10;
   font-size: 20px;
-  padding: 10px;
-  border: 2px solid;
+  /*Rounding the corners*/
   border-radius: 20%;
-  border-color: var(--purple3);
-  margin: 10px;
-  white-space: nowrap;
-  width: fit-content;
-  height: 25px;
 }
-/* Style the button for starting the game when hovered*/
-#gameButton:hover
+/*Style rules that apply to the class "rpButton" under the condition "hover"*/
+/*This represents the buttons in the rules and parameters areas when the user hovers over them*/
+/*This builds off of the style rules for the class "rpButton"*/
+.rpButton:hover
 {
-  background-color: var(--purple2);
+  /*Modifying the background color*/
+  background-color: var(--green2);
+  /*Setting the transition duration of the color change effect*/
   transition-duration: 0.5s;
 }
-/* Style the game board */
-#gameBoard
+/*Style rules that apply to the class "rules"*/
+/*This represents the text for the rule description in the rules area*/
+/*This builds off of the style rules for the class "rpText"*/
+#rules
 {
-  background-color: var(--purple2);
-  margin: 25px;
-  border-radius: 2%;
+  /*Modifying the additional margin space*/
+  margin-left: 25px;
 }
-.tile
+/*Style rules that apply to the id "parametersContainer"*/
+/*This represents the area where the parameters data is contained*/
+/*This builds off of the style rules for the class "rpContainer"*/
+#parametersContainer
 {
-  height: 100px;
-  width: 100px;
-  border-radius: 5%;
-  color: #5D3B14;
+  /*Adding wrapping to the flex display*/
+  flex-wrap: wrap;
+  /*Increasing the additional vertical padding space*/
+  min-height: 150px;
+}
+/*Style rules that apply to the id "defaultParameters"*/
+/*This represents the text explaining the parameter data*/
+/*This builds off of the style rules for the class "rpText"*/
+#defaultParameters
+{
+  /*Modifying the additional margin space*/
+  margin-left: 25px;
+}
+/*Style rules that apply to the id "updateParametersText"*/
+/*This represents the text warning the user of updating or resetting the parameters*/
+/*This builds off of the style rules for the class "rpText"*/
+#updateParametersText
+{
+  /*Modifying the additional margin space*/
+  margin-top: 20px;
+  margin-left: 25px;
+  margin-bottom: 25px;
+}
+/*Style rules that apply to the class "sliderValue"*/
+/*This represents the text for the current slider values in the parameters area*/
+.sliderValue
+{
+  /*Adding additional padding space*/
+  padding: 10px;
+  padding-bottom: 0px;
+  /*Setting the text color*/
+  color: var(--purple3);
+  /*Setting the font characteristics*/
+  font-weight: 10;
+  font-size: 15px;
+  /*Aligning the text with center justification*/
   text-align: center;
-  font-size: 80px;
-  vertical-align: middle;
 }
+/*Style rules that apply to the id "sliderContainer"*/
+/*This represents the area where the sliders are contained in the parameters area*/
+#sliderContainer
+{
+  /*Setting a flex display in the row direction with wrapping*/
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /*Setting the background color*/
+  background-color: var(--purple1);
+}
+/*Style rules that apply to the class "sliderColumn"*/
+/*This represents the area for the data of a single parameter in the slider container*/
+.sliderColumn
+{
+  /*Setting a flex display in the column direction*/
+  display: flex;
+  flex-direction: column;
+  /*Adding additional padding space*/
+  padding-left: 2.5%;
+  padding-right: 2.5%;
+  /*Setting the width*/
+  width: 15%;
+  /*Setting the background color*/
+  background-color: var(--purple1);
+}
+/*Style rules that apply to input elements with the type "range"*/
+/*This represents the range sliders in the slider container*/
+input[type="range"]
+{
+  /*Removing default styles*/
+  appearance: none;
+  /*Setting the cursor*/
+  cursor: pointer;
+  /*Hiding content that overflows*/
+  overflow: hidden;
+  /*Setting the height*/
+  height: 15px;
+  /*Setting the width*/
+  width: 100%;
+  /*Removing the outline*/
+  outline: none;
+  /*Setting the background color*/
+  background: var(--purple2);
+  /*Rounding the corners*/
+  border-radius: 20%;
+}
+/*Style rules that apply to the thumb of input elements with the type "range" in webkit browsers*/
+/*This represents the thumbs of the range sliders in the slider container*/
+input[type="range"]::-webkit-slider-thumb
+{
+  /*Removing default styles*/
+  appearance: none;
+  /*Setting the height*/
+  height: 15px;
+  /*Setting the width*/
+  width: 15px;
+  /*Removing the border*/
+  border: none;
+  /*Setting the background color*/
+  background-color: var(--purple3);
+  /*Setting the color of the selected portion of the track*/
+  box-shadow: -407px 0 0 400px var(--green2);
+  /*Rounding the corners*/
+  border-radius: 35%;
+}
+/*Style rules that apply to the thumb of input elements with the type "range" in moz browsers*/
+/*This represents the thumbs of the range sliders in the slider container*/
+input[type="range"]::-moz-range-thumb
+{
+  /*Setting the height*/
+  height: 15px;
+  /*Setting the width*/
+  width: 15px;
+  /*Removing the border*/
+  border: none;
+  /*Setting the background color*/
+  background-color: var(--purple3);
+  /*Setting the color of the selected portion of the track*/
+  box-shadow: -407px 0 0 400px var(--green2);
+  /*Rounding the corners*/
+  border-radius: 35%;
+}
+/*Style rules that apply to the id "checkboxContainer"*/
+/*This represents the area where the checkboxes are contained in the parameters area*/
+#checkboxContainer
+{
+  /*Setting a flex display in the row direction with wrapping*/
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  /*Allowing content that overflows in the x direction to be visible*/
+  overflow-x: visible;
+  /*Setting the backround color*/
+  background-color: var(--purple1);
+}
+/*Style rules that apply to the class "checkboxColumn"*/
+/*This represents the area for the data of a single parameter in the checkbox container*/
+.checkboxColumn
+{
+  /*Setting a flex display in the column direction*/
+  display: flex;
+  flex-direction: column;
+  /*Allowing content that overflows in the x direction to be visible*/
+  overflow-x: visible;
+  /*Adding additional padding space*/
+  padding-left: 7.5%;
+  padding-right: 7.5%;
+  /*Setting the width*/
+  width: 35%;
+  /*Setting the background color*/
+  background-color: var(--purple1);
+  /*Aligning items with center justification*/
+  align-items: center;
+}
+/*Style rules that apply to the class "checkboxContainer"*/
+/*This represents the area of each checkbox*/
+.checkboxContainer
+{
+  /*Setting the position to relative*/
+  position: relative;
+  /*Setting the cursor*/
+  cursor: pointer;
+  /*Allowing content that overflows in the x direction to be visible*/
+  overflow-x: visible;
+  /*Setting the font characteristics*/
+  font-size: 22px;
+}
+/*Style rules that apply to the class "checkboxContainer" for the attribute "input"*/
+/*This represents the input area of each checkbox*/
+/*This builds off of the style rules for the class "checkboxContainer"*/
+.checkboxContainer input
+{
+  /*Setting the position to absolute*/
+  position: absolute;
+  /*Setting the opacity*/
+  opacity: 0;
+  /*Setting the cursor*/
+  cursor: pointer;
+  /*Allowing content that overflows in the x direction to be visible*/
+  overflow-x: visible;
+  /*Setting the height*/
+  height: 0;
+  /*Setting the width*/
+  width: 0;
+}
+/*Style rules that apply to the class "checkmark"*/
+/*This represents the area for the checkmark of each checkbox*/
+.checkmark
+{
+  /*Setting the position to absolute*/
+  position: absolute;
+  /*Setting the position*/
+  top: 0;
+  left: 0;
+  /*Modifying the additional margin space*/
+  margin-inline-start: -10px;
+  /*Allowing content that overflows in the x direction to be visible*/
+  overflow-x: visible;
+  /*Setting the height*/
+  height: 20px;
+  /*Setting the width*/
+  width: 20px;
+  /*Setting the background color*/
+  background-color: var(--purple2);
+  /*Rounding the corners*/
+  border-radius: 25%;
+}
+/*Style rules that apply to the class "checkmarkContainer" for the attribute "input" under the condition "checked"*/
+/*This represents the area of each checkbox when it is checked*/
+/*This builds off of the style rules for the class "checkboxContainer" for the attribute "input"*/
+.checkboxContainer input:checked ~ .checkmark
+{
+  /*Modifying the background color*/
+  background-color: var(--purple3);
+  /*Allowing content that overflows in the x direction to be visible*/
+  overflow-x: visible;
+}
+/*Style rules that apply to the class "checkmark" under the condition "after"*/
+/*This represents the checkmark of each checkbox*/ 
+/*This builds off of the style rules for the class "checkmark"*/
+.checkmark:after
+{
+  /*Setting the content*/
+  content: "";
+  /*Setting the position to absolute*/
+  position: absolute;
+  /*Hiding the element from view*/
+  display: none;
+  /*Allowing content that overflows in the x direction to be visible*/
+  overflow-x: visible;
+}
+/*Style rules that apply to the class "checkboxContainer" for the attribute "input" under the condition "checked" and for the class "checkmark" under the condition "after"*/
+/*This represents the area for the checkmark of each checkbox when it is checked*/
+/*This builds off of the style rules for the classes "checkboxContainer" for the attribute "input" and "checkmark" for the attribute "after"*/
+.checkboxContainer input:checked ~ .checkmark:after
+{
+  /*Allowing the element to be visible*/
+  display: block;
+  /*Allowing content that overflows in the x direction to be visible*/
+  overflow-x: visible;
+}
+/*Style rules that apply to the class "checkboxContainer" and the class "checkmark" under the condition "after"*/
+/*This represents the checkmark of each checkbox when it is checked*/
+/*This builds off of the style rules for the class "checkboxContainer" and the class "checkmark" under the condition "after"*/
+.checkboxContainer .checkmark:after
+{
+  /*Setting the position*/
+  left: 6px;
+  top: 2px;
+  /*Allowing content that overflows in the x direction to be visible*/
+  overflow-x: visible;
+  /*Setting the height*/
+  height: 10px;
+  /*Setting the width*/
+  width: 5px;
+  /*Adding a border*/
+  border: solid var(--green2);
+  border-width: 0 3px 3px 0;
+  /*Rotating the element*/
+  transform: rotate(45deg);
+}
+/*Style rules that apply to the class "break"*/
+/*This represents additional space needed for the checkboxes to be displayed properly*/
 .break
 {
+  /*Adding additional vertical space*/
   height: 20px;
+}
+/*Style rules that apply to the id "gameContainer"*/
+/*This represents the area where the game is contained*/
+#gameContainer
+{
+  /*Setting a flex display in the column direction*/
+  display: flex;
+  flex-direction: column;
+  /*Setting the background color*/
+  background-color: var(--green1);
+  /*Adding a border*/
+  border: 5px solid;
+  border-color: var(--purple3);
+  /*Aligning items with center justification*/
+  align-items: center;
+}
+/*Style rules that apply to the id "gameRow"*/
+/*This represents the area where the restart game button and score container and contained*/
+#gameRow
+{
+  /*Setting a flex display in the row direction*/
+  display: flex;
+  flex-direction: row;
+}
+/*Style rules that apply to the class "gameItem"*/
+/*This represents the button for restarting the game and the area where the current score is contained*/
+.gameItem
+{
+  /*Adding additional margin space*/
+  margin: 10px;
+  margin-top: 30px;
+  margin-left: 25px;
+  /*Adding additional padding space*/
+  padding: 10px;
+  /*Setting the height*/
+  height: fit-content;
+  /*Setting the width*/
+  width: fit-content;
+  /*Setting the background color*/
+  background-color: var(--purple1);
+  /*Adding a border*/
+  border: 2px solid;
+  border-color: var(--purple3);
+  /*Setting the text color*/
+  color: var(--green3);
+  /*Setting the font characteristics*/
+  font-weight: 10;
+  font-size: 20px;
+  /*Aligning the text with center justification*/
+  text-align: center;
+  /*Rounding the corners*/
+  border-radius: 20%;
+}
+/*Style rules that apply to the id "gameButton" under the condition "hover"*/
+/*This represents the button for restarting the game when the user hovers over it*/
+/*This builds off of the style rules for the class "gameItem"*/
+#gameButton:hover
+{
+  /*Modifying the background color*/
+  background-color: var(--purple2);
+  /*Setting the transition duration of the color change effect*/
+  transition-duration: 0.5s;
+}
+/*Style rules that apply to the id "endText"*/
+/*This represents the text shown when the winning or losing condition is met*/
+#endText
+{
+  /*Adding additional padding space*/
+  padding: 20px;
+  /*Setting the text color*/
+  color: var(--green3);
+  /*Setting the font characteristics*/
+  font-weight: 10;
+  font-size: 25px;
+  /*Aligning the text with center justification*/
+  text-align: center;
+}
+/*Style rules that apply to the id "gameBoard"*/
+/*This represents the background of the playable area*/
+#gameBoard
+{
+  /*Adding additional margin space*/
+  margin: 25px;
+  /*Setting the background color*/
+  background-color: var(--purple2);
+  /*Rounding the corners*/
+  border-radius: 2%;
+}
+/*Style rules that apply to the class "tile"*/
+/*This represents the tiles in the playable area*/
+.tile
+{
+  /*Setting the height*/
+  height: 100px;
+  /*Setting the width*/
+  width: 100px;
+  /*Setting the text color*/
+  color: var(--brown1);
+  /*Setting the font characteristics*/
+  font-size: 80px;
+  /*Aligning the text with center justification*/
+  text-align: center;
+  /*Rounding the corners*/
+  border-radius: 5%;
 }
