@@ -1,108 +1,150 @@
+<!--HTML document setup-->
 <!DOCTYPE html>
 <html>
-
 <head>
   <meta charset = "utf-8">
   <meta name = "viewport" content = "width=device-width">
-  <title>Diagonal 2048</title>
+  <!--Title of the tab-->
+  <title>The 6 Game</title>
+  <!--Linking to the CSS document-->
   <link href = "style.css" rel = "stylesheet" type = "text/css" />
+  <!--Linking to the JS document-->
   <script src="script.js"></script>
 </head>
-
-<body>
-  <!--Area for the title text-->
+<!--Viewable content of the page-->
+<!--Calls the restartGame() function from the JS document to start a new game when the page content loads-->
+<body onload = restartGame()>
+  <!--Area containing the title and subtitle text-->
   <div id = "titleContainer">
-    <!--Title Text-->
-    <p id = "title"> Diagonal 2048<p>
+    <!--Title text-->
+    <p id = "title">The 6 Game<p>
     <!--Subtitle text-->
-    <p class = "subtitle"> Ren's variant on the popular game 2048, originally created by Gabriele Cirulli.</p>
-    <p class = "subtitle"> Some style features may not load correctly outside of Chrome and Safari.</p>
+    <!--Contains links to 2048 and 8-->
+    <p id = "subtitle"> Ren's variant on the popular game <a href="https://play2048.co/" class = "link">2048</a>, originally created by <a href="https://gabrielecirulli.com/" class = "link">Gabriele Cirulli</a>. Also inspired by <a href="http://suki.ipb.ac.rs/8//" class = "link">8</a> by <a href="http://suki.ipb.ac.rs/" class = "link">Šuki</a>.</p>
   </div>
-  <!--Area for the explanation of rules-->
+  <!--Area containing an explanation of the rules-->
   <div class = "rpContainer">
-    <!--Option to show the rules-->
-    <button class = "rpButton" onclick = showRules()>Show Game Rules</button>
+    <!--Button allowing the user to show and hide the text explaining the rules-->
+    <button class = "rpButton" id = "ruleButton" onclick = showRules()>Show Game Rules</button>
     <!--Explanation of the rules-->
+    <!--Content is modified in the JS document based on clicking the above button-->
     <p class = "rpText" id = "rules"></p>
   </div>
-  <!--Area for playing the game-->
+  <!--Area containing the game board, restart game button, score container, and end text-->
   <div id = gameContainer>
-    <div id = "gameButton" onclick = restartGame()>Start New Game</div>
+    <!--Area containing the restart game button and score container-->
+    <div id = "gameRow">
+      <!--Button allowing the user to restart the game to a new initial condition-->
+      <div class = "gameItem" id = "gameButton" onclick = restartGame()>Start New Game</div>
+      <!--Container to keep track of the user's current score-->
+      <p class = "gameItem" id = "scoreContainer">Current Score: 0</p>
+    </div>
+    <!--Text giving the final outcome of the current game-->
+    <!--Content is modified in the JS document when the winning or losing condition is reached-->
+    <p id = "endText"></p>
+    <!--Area for the game board-->
+    <!--Tiles are added and modified in the JS document based on user input-->
     <div id = "gameBoard"></div>
-    
   </div>
-  <!--Area for game parameters-->
+  <!--Area containing the explanation and modification options for the game parameters-->
   <div class = "rpContainer" id = "parametersContainer">
-    <!--Option to modify the parameters-->
-    <button class = "rpButton" onclick = showParameters()>Modify Game Parameters</button>
-    <!--Introduction to the parameters-->
-    <p class = "rpText">Diagonal 2048 can be modified to create a custom playing experience and difficulty level by changing certain parameters. Click the button for more details.</p>
+    <!--Button allowing the user to open and close the menu to modify the parameters-->
+    <button class = "rpButton" id = "parameterMenuButton" onclick = showParameters()>Open Parameter Options</button>
     <!--Explanation of the default parameters-->
-    <p class = "rpText" id = "defaultParameters">The current parameters are: Winning Tile = 6, Board Size = 4 x 4, Spawning a New Tile = 0.3, New Tile Being Value 2 = 0.15. Horizontal and vertical moves are enabled. Diagonal moves are enabled.</p>
-    <!--Area for modifying the parameters-->
+    <!--Content is modified in the JS document to reflect the current parameters when a new set of parameters is saved-->
+    <p class = "rpText" id = "defaultParameters">The 6 Game can be modified to create a custom playing experience and difficulty level by changing certain parameters. The current parameters are: Winning Tile = 6, Board Size = 4 x 4, Spawning a New Tile = 0.3, New Tile Being Value 2 = 0.15. Horizontal and vertical moves are enabled. Diagonal moves are enabled.</p>
+    <!--Area containing the explanations of the winning tile, row size, column size, tile probability, and two probability parameters, and corresponding range sliders to modify their values-->
+    <!--Content is modified in the JS document to reflect the current parameters when a new set of parameters is saved-->
     <div id = "sliderContainer">
-      <!--Area for modifying the winning tile value-->
+      <!--Area containing the data for the winning tile parameter-->
       <div class = "sliderColumn">
         <p class = "rpText2 hidden">Winning Tile Value</p>
+        <!--Range slider allowing user input for the winning tile parameter-->
         <input type = "range" min = "2" max = "10" step = "1" value = "6" oninput="winValue.innerText = this.value" class = "parameterSlider hidden" id = "winSlider">
+        <!--Currently selected value of the range slider for the winning tile parameter-->
         <p class = "sliderValue hidden" id = "winValue">6</p>
+        <!--Explanation of the winning tile parameter-->
         <p class = "rpText3 hidden">This controls the value of the tile that you need to create to win. Higher valued tiles require more space to create, so it is recommended to increase the size of the board as well if increasing this variable.</p>
       </div>
-      <!--Area for modifying the number of rows-->
+      <!--Area containing the data for the row size parameter-->
       <div class = "sliderColumn">
         <p class = "rpText2 hidden">Number of Rows</p>
+        <!--Range slider allowing user input for the row size parameter-->
         <input type = "range" min = "3" max = "8" step = "1" value = "4" oninput="rowValue.innerText = this.value" class = "parameterSlider hidden" id = "rowSlider">
+        <!--Currently selected value of the range slider for the row size parameter-->
         <p class = "sliderValue hidden" id = "rowValue">4</p>
+        <!--Explanation of the row size parameter-->
         <p class = "rpText3 hidden">This controls the number of rows on the board. Smaller board sizes will lead to more restrictive gameplay. Using different row and column dimensions can lead to more interesting effects with diagonal moves.</p>
       </div>
-      <!--Area for modifying the number of columns-->
+      <!--Area containing the data for the column size parameter-->
       <div class = "sliderColumn">
         <p class = "rpText2 hidden">Number of Columns</p>
+        <!--Range slider allowing user input for the column size parameter-->
         <input type="range" min = "3" max = "8" step = "1" value = "4" oninput="colValue.innerText = this.value" class = "parameterSlider hidden" id = "colSlider">
+        <!--Currently selected value of the range slider for the column size parameter-->
         <p class = "sliderValue hidden" id = "colValue">4</p>
-        <p class = "rpText3 hidden">This controls the number of rows on the board. Smaller board sizes will lead to more restrictive gameplay. Using different row and column dimensions can lead to more interesting effects with diagonal moves.</p>
+        <!--Explanation of the column size parameter-->
+        <p class = "rpText3 hidden">This controls the number of rows on the board. Smaller board sizes will lead to more restrictive gameplay. Larger board sizes may overflow the viewable area on smaller browser windows.</p>
       </div>
-      <!--Area for modifying the probability of tile-->
+      <!--Area containing the data for the tile probability parameter-->
       <div class = "sliderColumn">
         <p class = "rpText2 hidden">Probability of Tile</p>
+        <!--Range slider allowing user input for the tile probability parameter-->
         <input type = "range" min = "0" max = "1" step = "0.01" value = "0.3" oninput="tileValue.innerText = this.value" class = "parameterSlider hidden" id = "tileSlider">
+        <!--Currently selected value of the range slider for the tile probability parameter-->
         <p class = "sliderValue hidden" id = "tileValue">0.3</p>
+        <!--Explanation of the tile probability parameter-->
         <p class = "rpText3 hidden">This controls the probability that a new tile will spawn on the board after each move. Increasing this value can speed up the pace of gameplay, but may result in tiles filling up the board faster than merges can occur.</p>
       </div>
-      <!--Area for modifying the probability of two-->
+      <!--Area containing the data for the two probability parameter-->
       <div class = "sliderColumn">
         <p class = "rpText2 hidden">Probability of Two</p>
+        <!--Range slider allowing user input for the two probability parameter-->
         <input type = "range" min = "0" max = "1" step = "0.01" value = "0.1" oninput="twoValue.innerText = this.value" class = "parameterSlider hidden" id = "twoSlider">
+        <!--Currently selected value of the range slider for the two probability parameter-->
         <p class = "sliderValue hidden" id = "twoValue">0.15</p>
+        <!--Explanation of the two probability parameter-->
         <p class = "rpText3 hidden">This controls the probability that, if a new tile spawns, it will have an initial value of 2. Increasing this value can speed up the pace of gameplay. Choosing an extreme value to either end will make tile spawning behavior increasingly predictable.</p>
       </div>
     </div>
+    <!--Area containing the explanations of the vertical/horizontal moves and diagonal moves parameters, and corresponding checkboxes to modify their values->
+    <!--Content is modified in the JS document to reflect the current parameters when a new set of parameters is saved-->
     <div id = "checkboxContainer">
+      <!--Area containing the data for the vertical/horizontal moves parameter-->
       <div class = "checkboxColumn">
         <p class = "rpText2 hidden">Vertical and Horizontal Moves</p>
+        <!--Checkbox allowing user input for the vertical/horizontal moves parameter-->
         <label class="checkboxContainer">
           <input type = "checkbox" checked = "checked" class = "rpCheckbox" id = "hvMoves">
           <span class="checkmark hidden"></span>
         </label>
+        <!--Extra space around the checkbox added for formatting purposes-->
         <div class = "break"></div>
+        <!--Explanation of the vertical/horizontal moves parameter-->
         <p class = "rpText3 hidden">This controls whether horizontal and vertical moves are allowed. Unchecking this box will remove the functionality of the W, A, S, and D keys, which will make gameplay much more challenging.</p>
       </div>
+      <!--Area containing the data for the diagonal moves parameter-->
       <div class = "checkboxColumn">
         <p class = "rpText2 hidden">Diagonal Moves</p>
+        <!--Checkbox allowing user input for the diagonal moves parameter-->
         <label class="checkboxContainer">
           <input type = "checkbox" checked = "checked" class = "rpCheckbox" id = "dMoves">
           <span class="checkmark hidden"></span>
         </label>
+        <!--Extra space around the checkbox added for formatting purposes-->
         <div class = "break"></div>
+        <!--Explanation of the diagonal moves parameter-->
         <p class = "rpText3 hidden">This controls whether diagonal moves are allowed. Unchecking this box will remove the movement functionality of the T, G, H, and Y keys (but will not affect their merging functionality), which will make gameplay much more challenging.</p>
       </div>
     </div>
-    <!--Option to update the parameters-->
+    <!--Button allowing the user to save the new set of parameters currently selected in the above menu-->
+    <!--Calls the updateParameters() function from the JS document to save the new parameters and start a new game-->
     <button class = "rpButton hidden" id = "updateParametersButton" onclick = updateParameters()>Update Parameters</button>
-    <!--Option to reset the parameters-->
+    <!--Button allowing the user to restore the default parameters-->
+    <!--Calls the resetParameters() function from the JS document to restore the default parameters and start a new game-->
     <button class = "rpButton hidden" id = "resetParametersButton" onclick = resetParameters() display: none;>Reset Parameters</button>
-    <!--Warning about updating the parameters-->
-    <p class = "rpText hidden" id = "updateParametersText">Warning: Updating or resetting the parameters will restart the current game.</p>
+    <!--Explanation warning the users that updating or resetting the parameters will restart the current game-->
+    <p class = "rpText hidden" id = "updateParametersText">You must click "update" to save the new parameters.</br>Warning: Updating or resetting the parameters will restart the current game.</p>
   </div>
 </body>
 </html>
