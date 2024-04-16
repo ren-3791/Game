@@ -533,6 +533,8 @@ input[type="range"]::-moz-range-thumb
 /*This represents the background of the playable area*/
 #gameBoard
 {
+  /*Setting the position to relative*/
+  position: relative;
   /*Adding additional margin space*/
   margin: 25px;
   /*Setting the background color*/
