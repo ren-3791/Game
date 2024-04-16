@@ -991,7 +991,7 @@ function moveH()
         if(tileMatrix[rowIdx][colIdx].getValue() != 0)
         {
           //Loop while it is still possible to move the current tile SE
-          while(startRow < gridRows - 1 && startCol < gridRows - 1 && tileMatrix[startRow + 1][startCol + 1].getValue() == 0)
+          while(startRow < gridRows - 1 && startCol < gridCols - 1 && tileMatrix[startRow + 1][startCol + 1].getValue() == 0)
           {
             //Update the final row, start row, final col, and start col variables
             finalRow = startRow + 1;
