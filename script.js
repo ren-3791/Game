@@ -755,26 +755,30 @@ function moveT()
       //Define variables for the row and column indices of the NW corner of the current square
       rowIdx = possibleNWs[idx][0];
       colIdx = possibleNWs[idx][1];
-      //Define variables for the value of each tile in the current square
-      valNW = tileMatrix[rowIdx][colIdx].getValue();
-      valNE = tileMatrix[rowIdx][colIdx + 1].getValue();
-      valSE = tileMatrix[rowIdx + 1][colIdx + 1].getValue();
-      valSW = tileMatrix[rowIdx + 1][colIdx].getValue();
-      //Branch of the statement to execute if all of the tiles in the square have the same value
-      if(valNW == valNE && valNW == valSE && valNW == valSW)
+      //Only consider evaluating the current square if the NW corner is nonzero
+      if(tileMatrix[rowIdx][colIdx].getValue() != 0)
       {
-        //Update the score based on the value of the tiles merged
-        score = score + 4 ** (valNW + 1);
-        //Set the value of the tile in the NW corner of the current square to its current value incremented by 1
-        tileMatrix[rowIdx][colIdx].setValue(valNW + 1);
-        //Set the value of the tile in the NE corner of the current square to zero
-        tileMatrix[rowIdx][colIdx + 1].setValue(0);
-        //Set the value of the tile in the SE corner of the current square to zero
-        tileMatrix[rowIdx + 1][colIdx + 1].setValue(0);
-        //Set the value of the tile in the SW corner of the current square to zero
-        tileMatrix[rowIdx + 1][colIdx].setValue(0);
-        //Update the any tile moved flag variable
-        anyTileMovedFlag = true;
+        //Define variables for the value of each tile in the current square
+        valNW = tileMatrix[rowIdx][colIdx].getValue();
+        valNE = tileMatrix[rowIdx][colIdx + 1].getValue();
+        valSE = tileMatrix[rowIdx + 1][colIdx + 1].getValue();
+        valSW = tileMatrix[rowIdx + 1][colIdx].getValue();
+        //Branch of the statement to execute if all of the tiles in the square have the same value
+        if(valNW == valNE && valNW == valSE && valNW == valSW)
+        {
+          //Update the score based on the value of the tiles merged
+          score = score + 4 ** (valNW + 1);
+          //Set the value of the tile in the NW corner of the current square to its current value incremented by 1
+          tileMatrix[rowIdx][colIdx].setValue(valNW + 1);
+          //Set the value of the tile in the NE corner of the current square to zero
+          tileMatrix[rowIdx][colIdx + 1].setValue(0);
+          //Set the value of the tile in the SE corner of the current square to zero
+          tileMatrix[rowIdx + 1][colIdx + 1].setValue(0);
+          //Set the value of the tile in the SW corner of the current square to zero
+          tileMatrix[rowIdx + 1][colIdx].setValue(0);
+          //Update the any tile moved flag variable
+          anyTileMovedFlag = true;
+        }
       }
     }
     //Loop through each index of the game board that is capable of moving NW
@@ -856,26 +860,30 @@ function moveG()
       //Define variables for the row and column indices of the SW corner of the current square
       rowIdx = possibleSWs[idx][0];
       colIdx = possibleSWs[idx][1];
-      //Define variables for the value of each tile in the current square
-      valNW = tileMatrix[rowIdx - 1][colIdx].getValue();
-      valNE = tileMatrix[rowIdx - 1][colIdx + 1].getValue();
-      valSE = tileMatrix[rowIdx][colIdx + 1].getValue();
-      valSW = tileMatrix[rowIdx][colIdx].getValue();
-      //Branch of the statement to execute if all of the tiles in the square have the same value
-      if(valNW == valNE && valNW == valSE && valNW == valSW)
+      //Only consider evaluating the current square if the SW corner is nonzero
+      if(tileMatrix[rowIdx][colIdx].getValue() != 0)
       {
-        //Update the score based on the value of the tiles merged
-        score = score + 4 ** (valSW + 1);
-        //Set the value of the tile in the NW corner of the current square to zero
-        tileMatrix[rowIdx - 1][colIdx].setValue(0);
-        //Set the value of the tile in the NE corner of the current square to zero
-        tileMatrix[rowIdx - 1][colIdx + 1].setValue(0);
-        //Set the value of the tile in the SE corner of the current square to zero
-        tileMatrix[rowIdx][colIdx + 1].setValue(0);
-        //Set the value of the tile in the SW corner of the current square to its current value incremented by 1
-        tileMatrix[rowIdx][colIdx].setValue(valSW + 1);
-        //Update the any tile moved flag variable
-        anyTileMovedFlag = true;
+        //Define variables for the value of each tile in the current square
+        valNW = tileMatrix[rowIdx - 1][colIdx].getValue();
+        valNE = tileMatrix[rowIdx - 1][colIdx + 1].getValue();
+        valSE = tileMatrix[rowIdx][colIdx + 1].getValue();
+        valSW = tileMatrix[rowIdx][colIdx].getValue();
+        //Branch of the statement to execute if all of the tiles in the square have the same value
+        if(valNW == valNE && valNW == valSE && valNW == valSW)
+       {
+          //Update the score based on the value of the tiles merged
+          score = score + 4 ** (valSW + 1);
+          //Set the value of the tile in the NW corner of the current square to zero
+          tileMatrix[rowIdx - 1][colIdx].setValue(0);
+          //Set the value of the tile in the NE corner of the current square to zero
+          tileMatrix[rowIdx - 1][colIdx + 1].setValue(0);
+          //Set the value of the tile in the SE corner of the current square to zero
+          tileMatrix[rowIdx][colIdx + 1].setValue(0);
+          //Set the value of the tile in the SW corner of the current square to its current value incremented by 1
+          tileMatrix[rowIdx][colIdx].setValue(valSW + 1);
+          //Update the any tile moved flag variable
+          anyTileMovedFlag = true;
+        }
       }
     }
     //Loop through each index of the game board that is capable of moving SW
@@ -957,26 +965,30 @@ function moveH()
       //Define variables for the row and column indices of the SE corner of the current square
       rowIdx = possibleSEs[idx][0];
       colIdx = possibleSEs[idx][1];
-      //Define variables for the value of each tile in the current square
-      valNW = tileMatrix[rowIdx - 1][colIdx - 1].getValue();
-      valNE = tileMatrix[rowIdx - 1][colIdx].getValue();
-      valSE = tileMatrix[rowIdx][colIdx].getValue();
-      valSW = tileMatrix[rowIdx][colIdx - 1].getValue();
-      //Branch of the statement to execute if all of the tiles in the square have the same value
-      if(valNW == valNE && valNW == valSE && valNW == valSW)
+      //Only consider evaluating the current square if the SE corner is nonzero
+      if(tileMatrix[rowIdx][colIdx].getValue() != 0)
       {
-        //Update the score based on the value of the tiles merged
-        score = score + 4 ** (valSE + 1);
-        //Set the value of the tile in the NW corner of the current square to zero
-        tileMatrix[rowIdx - 1][colIdx - 1].setValue(0);
-        //Set the value of the tile in the NE corner of the current square to zero
-        tileMatrix[rowIdx - 1][colIdx].setValue(0);
-        //Set the value of the tile in the SE corner of the current square to its current value incremented by 1
-        tileMatrix[rowIdx][colIdx].setValue(valSE + 1);
-        //Set the value of the tile in the SW corner of the current square to zero
-        tileMatrix[rowIdx][colIdx - 1].setValue(0);
-        //Update the any tile moved flag variable
-        anyTileMovedFlag = true;
+        //Define variables for the value of each tile in the current square
+        valNW = tileMatrix[rowIdx - 1][colIdx - 1].getValue();
+        valNE = tileMatrix[rowIdx - 1][colIdx].getValue();
+        valSE = tileMatrix[rowIdx][colIdx].getValue();
+        valSW = tileMatrix[rowIdx][colIdx - 1].getValue();
+        //Branch of the statement to execute if all of the tiles in the square have the same value
+        if(valNW == valNE && valNW == valSE && valNW == valSW)
+        {
+          //Update the score based on the value of the tiles merged
+          score = score + 4 ** (valSE + 1);
+          //Set the value of the tile in the NW corner of the current square to zero
+          tileMatrix[rowIdx - 1][colIdx - 1].setValue(0);
+          //Set the value of the tile in the NE corner of the current square to zero
+          tileMatrix[rowIdx - 1][colIdx].setValue(0);
+          //Set the value of the tile in the SE corner of the current square to its current value incremented by 1
+          tileMatrix[rowIdx][colIdx].setValue(valSE + 1);
+          //Set the value of the tile in the SW corner of the current square to zero
+          tileMatrix[rowIdx][colIdx - 1].setValue(0);
+          //Update the any tile moved flag variable
+          anyTileMovedFlag = true;
+        }
       }
     }
     //Loop through each index of the game board that is capable of moving SE
@@ -1058,25 +1070,29 @@ function moveY()
       //Define variables for the row and column indices of the NE corner of the current square
       rowIdx = possibleNEs[idx][0];
       colIdx = possibleNEs[idx][1];
-      //Define variables for the value of each tile in the current square
-      valNW = tileMatrix[rowIdx][colIdx - 1].getValue();
-      valNE = tileMatrix[rowIdx][colIdx].getValue();
-      valSE = tileMatrix[rowIdx + 1][colIdx].getValue();
-      valSW = tileMatrix[rowIdx + 1][colIdx - 1].getValue();
-      if(valNW == valNE && valNW == valSE && valNW == valSW)
+      //Only consider evaluating the current square if the NW corner is nonzero
+      if(tileMatrix[rowIdx][colIdx].getValue() != 0)
       {
-        //Update the score based on the value of the tiles merged
-        score = score + 4 ** (valNE + 1);
-        //Set the value of the tile in the NW corner of the current square to zero
-        tileMatrix[rowIdx][colIdx - 1].setValue(0);
-        //Set the value of the tile in the NE corner of the current square to its current value incremented by 1
-        tileMatrix[rowIdx][colIdx].setValue(valNE + 1);
-        //Set the value of the tile in the SE corner of the current square to zero
-        tileMatrix[rowIdx + 1][colIdx].setValue(0);
-        //Set the value of the tile in the SW corner of the current square to zero
-        tileMatrix[rowIdx + 1][colIdx - 1].setValue(0);
-        //Update the any tile moved flag variable
-        anyTileMovedFlag = true;
+        //Define variables for the value of each tile in the current square
+        valNW = tileMatrix[rowIdx][colIdx - 1].getValue();
+        valNE = tileMatrix[rowIdx][colIdx].getValue();
+        valSE = tileMatrix[rowIdx + 1][colIdx].getValue();
+        valSW = tileMatrix[rowIdx + 1][colIdx - 1].getValue();
+        if(valNW == valNE && valNW == valSE && valNW == valSW)
+        {
+          //Update the score based on the value of the tiles merged
+          score = score + 4 ** (valNE + 1);
+          //Set the value of the tile in the NW corner of the current square to zero
+          tileMatrix[rowIdx][colIdx - 1].setValue(0);
+          //Set the value of the tile in the NE corner of the current square to its current value incremented by 1
+          tileMatrix[rowIdx][colIdx].setValue(valNE + 1);
+          //Set the value of the tile in the SE corner of the current square to zero
+          tileMatrix[rowIdx + 1][colIdx].setValue(0);
+          //Set the value of the tile in the SW corner of the current square to zero
+          tileMatrix[rowIdx + 1][colIdx - 1].setValue(0);
+          //Update the any tile moved flag variable
+          anyTileMovedFlag = true;
+        }
       }
     }
     //Loop through each index of the game board that is capable of moving NE
