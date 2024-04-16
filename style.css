@@ -556,6 +556,8 @@ input[type="range"]::-moz-range-thumb
   font-size: 80px;
   /*Aligning the text with center justification*/
   text-align: center;
+  /*Aligning the text vertically with center justification*/
+  line-height: 100px;
   /*Rounding the corners*/
   border-radius: 5%;
 }
