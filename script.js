@@ -994,7 +994,7 @@ function moveH()
     //Loop through each index of the game board that is capable of moving SE
     for(var rowIdx = gridRows - 2; rowIdx > -1; rowIdx--)
     {
-      for(var colIdx = gridRows - 2; colIdx > -1; colIdx--)
+      for(var colIdx = gridCols - 2; colIdx > -1; colIdx--)
       {
         //Define variables for the starting row and column of the tile
         startRow = rowIdx;
